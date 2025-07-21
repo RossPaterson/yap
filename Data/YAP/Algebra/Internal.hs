@@ -74,13 +74,15 @@ class  (Eq a, Ring a) => EuclideanDomain a  where
     -- ^ @'divMod' n d == ('div' n d, 'mod' n d)@
 
     associate, unit  :: a -> a
-    -- ^ For each @n@ there is a decomposition @n == 'associate' n * 'unit' n@
-    -- such that @'unit' n@ has a multiplicative inverse and
+    -- ^ For each @x@ there is a decomposition @x == 'associate' x * 'unit' x@
+    -- such that @'unit' x@ has a multiplicative inverse and
     --
-    -- * @'associate' ('unit' n) == 'unit' ('associate' n) == 1@
+    -- * if @x@ and @y@ are factors of each other, then @'associate' x == 'associate' y@
     --
-    -- For integral types, @'associate' d@ is a non-negative integer and
-    -- than @'unit' d@ is @-1@ or @1@.
+    -- * @'associate' 1 == 1@
+    --
+    -- For integral types, @'associate' x@ is a non-negative integer and
+    -- @'unit' x@ is @-1@ or @1@.
 
     n `divMod` d     =  (n `div` d, n `mod` d)
     n `div` d        =  q  where (q,_) = divMod n d
