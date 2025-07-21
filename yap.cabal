@@ -1,6 +1,6 @@
 Name:           yap
-Version:        0.1
-Build-Depends:  base >= 4.4 && < 5
+Version:        0.2
+Build-Depends:  base >= 4.5 && < 4.6
 Build-Type:     Simple
 License:        BSD3
 license-file:   LICENSE
@@ -15,7 +15,7 @@ Description:    A simple refactoring of the Prelude numeric classes,
                 numeric classes.  This yields the following class hierarchy
                 (grey classes are unchanged):
                 .
-                <<http://code.haskell.org/~ross/images/hierarchy.png>>
+                <<http://code.haskell.org/~ross/images/hierarchy-2.png>>
                 .
                 "Prelude.YAP" is an almost-compatible replacement
                 for the standard Haskell Prelude, as long as you're
@@ -36,6 +36,9 @@ Description:    A simple refactoring of the Prelude numeric classes,
                 .
                  * 0.1: moved 'fromRational' back to 'Fractional', as it
                    isn't well-behaved for all fields.  Removed @realToField@.
+                .
+                 * 0.2: removed 'Eq' and 'Show' constraints from 'Num',
+                   following @base-4.5@.
 Exposed-Modules:
                 Data.YAP.Algebra
                 Data.YAP.Complex
