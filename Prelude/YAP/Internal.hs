@@ -62,7 +62,16 @@ class  (Real a, Enum a, EuclideanDomain a) => Integral a  where
                         where qr@(q,r) = divMod n d
 
 -- | Haskell 98 compatibility class
-class  (Num a, Field a) => Fractional a
+class  (Num a, Field a) => Fractional a  where
+    -- | Convert from 'Rational'
+    --
+    -- A floating point numeric literal represents the application of
+    -- the function 'fromRational' to the appropriate value of type
+    -- 'Rational', so such literals have type @('Field' a) => a@.
+    fromRational    :: Rational -> a
+
+    fromRational x   =  fromInteger (numerator x) /
+                        fromInteger (denominator x)
 
 -------------------------------------------------------------------------
 -- unchanged Haskell 98 classes
@@ -174,14 +183,9 @@ x ^^ n           =  if n >= 0 then x^n else recip (x^(-n))
 fromIntegral     :: (Integral a, Ring b) => a -> b
 fromIntegral     =  fromInteger . toInteger
 
--- | Obsolete general conversion to fractional types:
--- use 'realToField' instead.
+-- | General conversion to fields, via the 'Rational' type.
 realToFrac      :: (Real a, Fractional b) => a -> b
 realToFrac      =  fromRational . toRational
-
--- | General conversion to fields, via the 'Rational' type.
-realToField     :: (Real a, Field b) => a -> b
-realToField     =  fromRational . toRational
 
 -------------------------------------------------------------------------
 -- instances for Prelude numeric types
@@ -216,7 +220,8 @@ instance  Real Float  where
                        where (m,n) = Prelude.decodeFloat x
                              b     = Prelude.floatRadix  x
 
-instance  Fractional Float
+instance  Fractional Float  where
+    fromRational    =  Prelude.fromRational
 
 instance  Floating Float  where
     pi              =  Prelude.pi
@@ -258,7 +263,8 @@ instance  Real Double  where
                        where (m,n) = Prelude.decodeFloat x
                              b     = Prelude.floatRadix  x
 
-instance  Fractional Double
+instance  Fractional Double  where
+    fromRational    =  Prelude.fromRational
 
 instance  Floating Double  where
     pi              =  Prelude.pi
@@ -300,7 +306,9 @@ instance  (Integral a, Prelude.Integral a)  => Num (Ratio a)  where
 instance  (Integral a, Prelude.Integral a)  => Real (Ratio a)  where
     toRational (x:%y)   =  toInteger x :% toInteger y
 
-instance  (Integral a, Prelude.Integral a)  => Fractional (Ratio a)
+instance  (Integral a, Prelude.Integral a)  => Fractional (Ratio a)  where
+    fromRational x      =  fromInteger (numerator x) :%
+                           fromInteger (denominator x)
 
 instance  (Integral a, Prelude.Integral a)  => RealFrac (Ratio a)  where
     properFraction (x:%y) = (fromIntegral q, r:%y)

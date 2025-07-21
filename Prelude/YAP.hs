@@ -28,7 +28,7 @@ module Prelude.YAP (
     module Prelude,
     -- ** Compatibility classes
     module Data.YAP.Algebra,
-    Num(..), Real(..), Fractional, Integral(..),
+    Num(..), Real(..), Fractional(..), Integral(..),
     -- ** Unchanged classes
     RealFrac(..), Floating(..), RealFloat(..),
     -- ** Numeric functions
@@ -40,6 +40,5 @@ import Prelude hiding (
     Floating(..), RealFrac(..), RealFloat(..),
     subtract, even, odd, gcd, lcm, (^), (^^), fromIntegral, realToFrac)
 import Data.YAP.Algebra hiding (
-    AbelianGroup(zero), Ring, EuclideanDomain(associate, unit), Field,
-    realToField)
+    AbelianGroup(zero), Ring, EuclideanDomain(associate, unit), Field)
 import Prelude.YAP.Internal

@@ -154,7 +154,6 @@ instance  (RealFloat a) => Field (Complex a)  where
                                  y'' = scaleFloat k y'
                                  k   = - max (exponent x') (exponent y')
                                  d   = x'*x'' + y'*y''
-    fromRational a      =  fromRational a :+ 0
 
 instance  (RealFloat a) => Num (Complex a)  where
     {-# SPECIALISE instance Num (Complex Float) #-}
@@ -163,7 +162,8 @@ instance  (RealFloat a) => Num (Complex a)  where
     signum (0:+0)       =  0
     signum z@(x:+y)     =  x/r :+ y/r  where r = magnitude z
 
-instance  (RealFloat a) => Fractional (Complex a)
+instance  (RealFloat a) => Fractional (Complex a)  where
+    fromRational a      =  fromRational a :+ 0
 
 instance  (RealFloat a) => Floating (Complex a) where
     {-# SPECIALISE instance Floating (Complex Float) #-}

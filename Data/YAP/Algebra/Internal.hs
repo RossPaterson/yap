@@ -7,7 +7,7 @@ module Data.YAP.Algebra.Internal (
 
 import Prelude hiding (
     (+), (-), negate, (*), fromInteger,
-    div, mod, divMod, (/), recip, fromRational,
+    div, mod, divMod, (/), recip,
     subtract, gcd, lcm)
 import qualified Prelude
 import GHC.Real (Ratio(..))
@@ -96,17 +96,9 @@ class  (Ring a) => Field a  where
     (/)              :: a -> a -> a
     -- | Multiplicative inverse.
     recip            :: a -> a
-    -- | Convert from 'Rational'
-    --
-    -- A floating point numeric literal represents the application of
-    -- the function 'fromRational' to the appropriate value of type
-    -- 'Rational', so such literals have type @('Field' a) => a@.
-    fromRational    :: Rational -> a
 
     recip x          =  1 / x
     x / y            =  x * recip y
-    fromRational x   =  fromInteger (numerator x) /
-                        fromInteger (denominator x)
 
 -------------------------------------------------------------------------
 -- instances for Prelude numeric types
@@ -156,7 +148,6 @@ instance  Ring Float  where
 
 instance  Field Float  where
     (/)             =  (Prelude./)
-    fromRational    =  Prelude.fromRational
 
 instance  AbelianGroup Double  where
     zero            =  0
@@ -170,7 +161,6 @@ instance  Ring Double  where
 
 instance  Field Double  where
     (/)             =  (Prelude./)
-    fromRational    =  Prelude.fromRational
 
 -- Numeric functions
 
@@ -248,8 +238,6 @@ instance  (EuclideanDomain a) => Ring (Ratio a)  where
 instance  (EuclideanDomain a) => Field (Ratio a)  where
     (x:%y) / (x':%y')   =  (x*y') % (y*x')
     recip (x:%y)        =  y % x
-    fromRational x      =  fromInteger (numerator x) :%
-                           fromInteger (denominator x)
 
 {-
 ratPrec = 7 :: Int

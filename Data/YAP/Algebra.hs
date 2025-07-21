@@ -18,7 +18,7 @@ module Data.YAP.Algebra (
     -- * Classes
     AbelianGroup(..), Ring(..), EuclideanDomain(..), Field(..),
     -- * Utility functions
-    subtract, gcd, lcm, realToField
+    subtract, gcd, lcm
   ) where
 
 import Data.YAP.Algebra.Internal

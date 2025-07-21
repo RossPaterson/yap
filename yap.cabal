@@ -1,11 +1,12 @@
 Name:           yap
-Version:        0.0
+Version:        0.1
 Build-Depends:  base >= 4.4 && < 5
 Build-Type:     Simple
 License:        BSD3
 license-file:   LICENSE
 Author:         Ross Paterson <ross@soi.city.ac.uk>
 Maintainer:     Ross Paterson <ross@soi.city.ac.uk>
+Category:       Algebra, Prelude
 Synopsis:       yet another prelude - a simplistic refactoring with algebraic
                 classes
 Description:    A simple refactoring of the Prelude numeric classes,
@@ -28,6 +29,13 @@ Description:    A simple refactoring of the Prelude numeric classes,
                 .
                 Other modules contain some example instances, including
                 for the existing types @Complex@ and @Ratio@.
+                .
+                History:
+                .
+                 * 0.0: initial version
+                .
+                 * 0.1: moved 'fromRational' back to 'Fractional', as it
+                   isn't well-behaved for all fields.  Removed @realToField@.
 Exposed-Modules:
                 Data.YAP.Algebra
                 Data.YAP.Complex
