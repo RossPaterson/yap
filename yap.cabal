@@ -27,8 +27,9 @@ Description:    A simple refactoring of the Prelude numeric classes,
                 you'll need to import it if you want access to the
                 new names, including to define instances.
                 .
-                Other modules contain some example instances, including
-                for the existing types @Complex@ and @Ratio@.
+                Other modules contain instances for the existing types
+                @Complex@ and @Ratio@.
+                Further examples are in the @yap-examples@ package.
                 .
                 History:
                 .
