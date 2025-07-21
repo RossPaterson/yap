@@ -17,7 +17,7 @@ Description:    A simple refactoring of the Prelude numeric classes,
                 of the Haskell 2010 numeric classes, yielding the
                 following class hierarchy (grey classes are unchanged):
                 .
-                <<images/hierarchy.svg>>
+                <<https://raw.githubusercontent.com/RossPaterson/yap/refs/heads/main/images/hierarchy.svg>>
                 .
                 "Prelude.YAP" is an almost-compatible replacement
                 for the standard Haskell Prelude, as long as you're
@@ -39,6 +39,10 @@ Description:    A simple refactoring of the Prelude numeric classes,
 Extra-Doc-Files:
                 changelog
                 images/hierarchy.svg
+
+Source-Repository head
+    Type: git
+    Location: https://github.com/RossPaterson/yap
 
 Library
     Default-Language: Haskell2010
