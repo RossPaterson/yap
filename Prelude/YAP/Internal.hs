@@ -22,7 +22,7 @@ infixl 7  `quot`, `rem`
 
 -- all builtin numeric types, plus Ratio and Complex
 -- | Haskell 98 compatibility class
-class  (Eq a, Show a, Ring a) => Num a  where
+class  (Ring a) => Num a  where
     -- | Absolute value.
     abs                 :: a -> a
     -- | Sign of a number.
