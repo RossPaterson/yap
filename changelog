@@ -1,0 +1,17 @@
+-*-change-log-*-
+
+0.3: Ross Paterson <R.Paterson@city.ac.uk> Jul 2025
+	* much finer grained classes
+	* split out examples into yap-examples
+
+0.2.1: Ross Paterson <R.Paterson@city.ac.uk> Nov 2016
+	* warning fixes
+
+0.2: Ross Paterson <R.Paterson@city.ac.uk> Feb 2012
+	* Removed Eq and Show constraints from Num, following base-4.5.
+
+0.1: Ross Paterson <R.Paterson@city.ac.uk> Oct 2011
+	* Moved fromRational back to Fractional, as it isn't well-behaved for all fields. Removed realToField.
+
+0.0: Ross Paterson <R.Paterson@city.ac.uk> Aug 2011
+	* Initial version
